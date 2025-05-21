@@ -47,6 +47,7 @@ class ClientScraper:
             url = "https://" + url
 
         # Parse the URL
+        #  it returns a special object (specifically, a ParseResult object)
         parsed_url = urlparse(url)
 
         # Normalize domain (remove www. if present)
@@ -55,6 +56,7 @@ class ClientScraper:
             netloc = netloc[4:]
 
         # Rebuild the URL with normalized domain and without trailing slash
+        # If the path ends with /, remove it.
         path = parsed_url.path
         if path.endswith("/"):
             path = path[:-1]
